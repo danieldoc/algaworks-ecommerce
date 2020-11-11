@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.iniciandocomjpa;
+package com.algaworks.ecommerce;
 
 import org.junit.After;
 import org.junit.AfterClass;
