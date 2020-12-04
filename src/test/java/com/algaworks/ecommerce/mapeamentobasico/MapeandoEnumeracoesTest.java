@@ -11,8 +11,7 @@ public class MapeandoEnumeracoesTest extends EntityManagerTest {
     @Test
     public void testarEnum() {
         Cliente cliente = new Cliente();
-        cliente.setId(4);
-        cliente.setNome("Jose");
+        cliente.setNome("José");
         cliente.setSexo(SexoCliente.MASCULINO);
 
         entityManager.getTransaction().begin();
