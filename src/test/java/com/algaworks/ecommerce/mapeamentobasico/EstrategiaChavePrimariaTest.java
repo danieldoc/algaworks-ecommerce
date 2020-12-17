@@ -2,7 +2,6 @@ package com.algaworks.ecommerce.mapeamentobasico;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Categoria;
-
 import org.junit.Assert;
 import org.junit.Test;
 
