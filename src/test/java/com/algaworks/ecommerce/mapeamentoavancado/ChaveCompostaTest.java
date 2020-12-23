@@ -11,7 +11,6 @@ public class ChaveCompostaTest extends EntityManagerTest {
 
     @Test
     public void salvarItem() {
-        entityManager.getTransaction().begin();
 
         final Cliente cliente = entityManager.find(Cliente.class, 1);
         final Produto produto = entityManager.find(Produto.class, 1);
@@ -22,21 +21,18 @@ public class ChaveCompostaTest extends EntityManagerTest {
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(produto.getPreco());
 
-        entityManager.persist(pedido);
-
-        entityManager.flush();
-
         final ItemPedido item = new ItemPedido();
 //        item.setPedidoId(pedido.getId()); Com @IdClass
 //        item.setProdutoId(produto.getId());
-        item.setId(new ItemPedidoId(pedido.getId(), produto.getId()));
+        item.setId(new ItemPedidoId());
         item.setPedido(pedido);
         item.setProduto(produto);
         item.setPrecoProduto(produto.getPreco());
         item.setQuantidade(1);
 
+        entityManager.getTransaction().begin();
+        entityManager.persist(pedido);
         entityManager.persist(item);
-
         entityManager.getTransaction().commit();
 
         entityManager.clear();
