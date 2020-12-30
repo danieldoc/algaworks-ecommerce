@@ -5,12 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"))
 @Entity
 @Table(name = "cliente")
 public class Cliente {
@@ -26,7 +28,11 @@ public class Cliente {
     private String primeiroNome;
 
     @Enumerated(EnumType.STRING)
+    @Column(table = "cliente_detalhe")
     private SexoCliente sexo;
+
+    @Column(name = "data_nascimento", table = "cliente_detalhe")
+    private LocalDate dataNascimento;
 
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos;
