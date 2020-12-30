@@ -2,7 +2,6 @@ package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.listener.GenericoListener;
 import com.algaworks.ecommerce.listener.GerarNotaFiscalListener;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,7 +45,7 @@ public class Pedido extends EntidadeBaseInteger {
     private List<ItemPedido> itens;
 
     @OneToOne(mappedBy = "pedido")
-    private PagamentoCartao pagamento;
+    private Pagamento pagamento;
 
     public boolean isPago() {
         return StatusPedido.PAGO.equals(status);
