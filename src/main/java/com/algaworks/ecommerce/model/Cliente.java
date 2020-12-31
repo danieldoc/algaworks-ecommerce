@@ -17,15 +17,17 @@ import java.util.Map;
         indexes = {@Index(name = "idx_nome", columnList = "nome")})
 public class Cliente extends EntidadeBaseInteger {
 
+    @Column(length = 100, nullable = false)
     private String nome;
 
+    @Column(length = 14, nullable = false)
     private String cpf;
 
     @Transient
     private String primeiroNome;
 
     @Enumerated(EnumType.STRING)
-    @Column(table = "cliente_detalhe")
+    @Column(length = 14, nullable = false, table = "cliente_detalhe")
     private SexoCliente sexo;
 
     @Column(name = "data_nascimento", table = "cliente_detalhe")

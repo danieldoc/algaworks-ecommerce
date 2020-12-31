@@ -3,7 +3,9 @@ package com.algaworks.ecommerce.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 @Getter
 @Setter
@@ -11,6 +13,6 @@ import javax.persistence.*;
 @DiscriminatorValue("boleto")
 public class PagamentoBoleto extends Pagamento {
 
-    @Column(name = "codigo_barras")
+    @Column(name = "codigo_barras", length = 100, nullable = false)
     private String codigoBarras;
 }
