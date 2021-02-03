@@ -10,10 +10,10 @@ public class AutoRelacionamentoTest extends EntityManagerTest {
     @Test
     public void verificarRelacionamento() {
         Categoria categoriaPai = new Categoria();
-        categoriaPai.setNome("Eletrônicos");
+        categoriaPai.setNome("Futebol");
 
         Categoria categoria = new Categoria();
-        categoria.setNome("Celular");
+        categoria.setNome("Uniforme");
         categoria.setCategoriaPai(categoriaPai);
 
         entityManager.getTransaction().begin();
