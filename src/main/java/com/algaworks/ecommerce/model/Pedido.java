@@ -18,7 +18,7 @@ import java.util.List;
 public class Pedido extends EntidadeBaseInteger {
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "cliente_id", nullable = false, foreignKey = @ForeignKey(name = "fk_pedido_cliente"))
     private Cliente cliente;
 
     @Column(name = "data_criacao", length = 6, nullable = false, updatable = false)
@@ -92,8 +92,6 @@ public class Pedido extends EntidadeBaseInteger {
 
     public void calcularTotal() {
         if (itens != null)
-            total = itens.stream()
-                    .map(ItemPedido::getPrecoProduto)
-                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+            total = itens.stream().map(ItemPedido::getPrecoProduto).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }
